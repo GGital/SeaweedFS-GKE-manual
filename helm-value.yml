@@ -1,0 +1,39 @@
+master:
+  volumeSizeLimitMB: 1000
+  logs:
+    type: "emptyDir" # Preventing log read only error in GKE
+  data:
+    type: "persistentVolumeClaim"
+    size: 2Gi # Must change to match adjusted size of volume
+    storageClass: "standard"
+
+filer:
+  data:
+    type: "persistentVolumeClaim"
+    size: 2Gi # Must change to match adjusted size of volume
+    storageClass: "standard"
+  logs:
+    type: "emptyDir" # Preventing log read only error in GKE
+
+volume:
+  replicas: 1
+  logs:
+    type: "emptyDir" # Preventing log read only error in GKE
+  extraArgs:
+    - "-max=10" # Adjustable to fit size of persistentVolume
+    - "-ip.bind=0.0.0.0"
+    - "-minFreeSpacePercent=5"
+  dataDirs:
+    - name: "data1"
+      type: "persistentVolumeClaim"
+      size: 10Gi # Adjustable
+      storageClass: "standard"
+
+s3:
+  enabled: true
+  replicas: 1
+  extraEnvironmentVars:
+    AWS_ACCESS_KEY_ID: "admin" # KEY_ID for S3 API
+    AWS_SECRET_ACCESS_KEY: "adminpassword" # ACCESS KEY for S3 API
+  logs:
+    type: "emptyDir" # Preventing log read only error in GKE
