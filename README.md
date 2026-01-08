@@ -75,8 +75,7 @@ mc alias set seaweed http://<s3-lb-external-ip>:8333 <ACCESS_KEY> <SECRET_KEY>
 | **Step** | **Command** | **What it tests** |
 | --- | --- | --- |
 | **1. Create Bucket** | `mc mb seaweed/test-bucket` | Write permission to the Filer metadata. |
-| **2. Upload File** | `echo "hello seaweed" > test.txt` 
- `mc cp test.txt seaweed/test-bucket/` | Data transfer to Volume servers. |
+| **2. Upload File** | `echo "hello seaweed" > test.txt` <br>`mc cp test.txt seaweed/test-bucket/` | Data transfer to Volume servers. |
 | **3. List Files** | `mc ls seaweed/test-bucket/` | Metadata retrieval from the Filer. |
 | **4. Download File** | `mc cp seaweed/test-bucket/test.txt ./test-download.txt` | Read path from Volume servers. |
 | **5. Cleanup** | `mc rm --recursive --force seaweed/test-bucket` | Delete/Garbage collection logic. |
