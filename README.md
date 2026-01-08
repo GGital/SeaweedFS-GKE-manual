@@ -80,3 +80,7 @@ mc alias set seaweed http://<s3-lb-external-ip>:8333 <ACCESS_KEY> <SECRET_KEY>
 | **3. List Files** | `mc ls seaweed/test-bucket/` | Metadata retrieval from the Filer. |
 | **4. Download File** | `mc cp seaweed/test-bucket/test.txt ./test-download.txt` | Read path from Volume servers. |
 | **5. Cleanup** | `mc rm --recursive --force seaweed/test-bucket` | Delete/Garbage collection logic. |
+
+## Notion
+
+Notion Link : https://mewing-loaf-905.notion.site/Guide-to-SeaweedFS-and-Minio-CLI-on-GKE-2e00f518934580ba921cff0ad19095da?source=copy_link
